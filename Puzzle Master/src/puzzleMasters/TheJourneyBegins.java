@@ -12,7 +12,6 @@ public class TheJourneyBegins {
 	private static int scorePoints;
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Puzzle Masters!");
 		do {
 			if (currentScenario.equals("startMenu")) {
 				currentScenario = startMenu();
@@ -57,110 +56,37 @@ public class TheJourneyBegins {
 			} else if (currentScenario.equals("reviseAnswers")) {
 				currentScenario = reviseAnswers();
 			}
-		} while (!currentScenario.equals("goodEnd") && !currentScenario.equals("death")
-				&& !currentScenario.equals("evilEnd") && !currentScenario.equals("weakEnd")
-				&& !currentScenario.equals("heroEnd"));
-
-		/**
-		 * If the user completes the game or the user dies
-		 */
-		if (currentScenario.equals("goodEnd")) { // Game completed with good rep
-			System.out.println(
-					"\nCongratulations " + p.firstName + "! You have completed Puzzle masters with good morals!");
-			breaker(20, ">//<");
-			System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
-			if (p.goodEvil >= 75) {
-				System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
-			} else if (p.goodEvil > 50 && p.goodEvil < 75) {
-				System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
-
-			} else if (p.goodEvil == 50) {
-				System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
-			} else if (p.goodEvil < 50 && p.goodEvil > 25) {
-				System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
-			} else {
-				System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
-			}
-			breaker(20, ">//<");
-			// if the user completes the game with a negative good/evil score
-		} else if (currentScenario.equals("evilEnd")) {
-			System.out.println(
-					"\nCongratulations " + p.firstName + "! You have completed Puzzle masters with bad morals!");
-			breaker(20, ">:) ");
-			System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
-			if (p.goodEvil >= 75) {
-				System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
-			} else if (p.goodEvil > 50 && p.goodEvil < 75) {
-				System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
-
-			} else if (p.goodEvil == 50) {
-				System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
-			} else if (p.goodEvil < 50 && p.goodEvil > 25) {
-				System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
-			} else {
-				System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
-			}
-			breaker(20, ">:) ");
-			// if the user dies
-		} else if (currentScenario.equals("death")) {
-			System.out.println("\n*Play your own pity music*");
-			System.out.println("You have been defeated...");
-			breaker(20, ">.< ");
-			System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
-			if (p.goodEvil >= 75) {
-				System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
-			} else if (p.goodEvil > 50 && p.goodEvil < 75) {
-				System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
-
-			} else if (p.goodEvil == 50) {
-				System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
-			} else if (p.goodEvil < 50 && p.goodEvil > 25) {
-				System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
-			} else {
-				System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
-			}
-			breaker(20, ">.< ");
-			// if the user is killed while being a hero
-		} else if (currentScenario.equals("heroEnd")) {
-			System.out.println("\nSadly " + p.firstName
-					+ ", you have died... But, your sacrifice wasn't in vain, your name will forever be remembered");
-			breaker(80, ".");
-			System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
-			if (p.goodEvil >= 75) {
-				System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
-			} else if (p.goodEvil > 50 && p.goodEvil < 75) {
-				System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
-
-			} else if (p.goodEvil == 50) {
-				System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
-			} else if (p.goodEvil < 50 && p.goodEvil > 25) {
-				System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
-			} else {
-				System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
-			}
-			breaker(80, ".");
-			// if the user completes the game as a coward
-		} else {
-			System.out.println(
-					"\nCongratulations " + p.firstName + "! You have completed Puzzle masters by running in fear!");
-			breaker(20, "+=+=");
-			System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
-			if (p.goodEvil >= 75) {
-				System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
-			} else if (p.goodEvil > 50 && p.goodEvil < 75) {
-				System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
-
-			} else if (p.goodEvil == 50) {
-				System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
-			} else if (p.goodEvil < 50 && p.goodEvil > 25) {
-				System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
-			} else {
-				System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
-			}
-			breaker(20, "=+=+=");
+		} while (!currentScenario.equals("end"));
+		do{
+			System.out.println("would you like to play again? (yes/no)");
+			decision = Keyboard.keyb.nextLine();
+		} while (!decision.equalsIgnoreCase("yes") && !decision.equalsIgnoreCase("no"));
+		if(decision.equalsIgnoreCase("yes")){
+			startMenu();
+		}else{
+			System.out.println("Okay, bye!");
 		}
 	}
 
+	//Ending score
+	public static void endResult(){
+		breaker(20, ">//<");
+		System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
+		if (p.goodEvil >= 75) {
+			System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
+		} else if (p.goodEvil > 50 && p.goodEvil < 75) {
+			System.out.println("Your Good/Bad Metre is: Okay person, " + p.goodEvil);
+
+		} else if (p.goodEvil == 50) {
+			System.out.println("Your Good/Bad Metre is: Decent, " + p.goodEvil);
+		} else if (p.goodEvil < 50 && p.goodEvil > 25) {
+			System.out.println("Your Good/Bad Metre is: Delinquent, " + p.goodEvil);
+		} else {
+			System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
+		}
+		breaker(20, ">//<");
+	}
+	
 	// Break up parts of text depending on "x" using breaker(x value);
 	public static void breaker(int x) {
 		breaker(x, "=");
@@ -213,6 +139,7 @@ public class TheJourneyBegins {
 
 	// The starting screen
 	public static String startMenu() {
+		System.out.println("Welcome to Puzzle Masters!");
 		String play = "";
 		String toMain = "";
 		do {
@@ -281,6 +208,7 @@ public class TheJourneyBegins {
 			System.out.println("\"Hey " + p.firstName + ".\"\n -Lewis (The mathematician)");
 			p.goodEvil += 10;
 			p.group = new FriendGroup("nerds");
+			p.endingChoice = new WhichEnd("nerds");
 			do {
 				System.out.println(
 						"\n\"We were just trying to solve this riddle, would you like to help?\"\n -Margaret (Great at English)\n A. Yeah! \n B. Nah, I'll pass.");
@@ -304,6 +232,7 @@ public class TheJourneyBegins {
 		} else { // If the user chose rebels
 			p.goodEvil -= 10;
 			p.group = new FriendGroup("rebels");
+			p.endingChoice = new WhichEnd("rebels");
 			System.out.println("\"Sup " + p.firstName + ".\"\n -Ace (Top dog of your gang)");
 			System.out.println("\n\"Hey guys, what are you doing? \n -you");
 			do { // Ask user to make a decision
@@ -403,7 +332,6 @@ public class TheJourneyBegins {
 	 * @return which story line the user wants.
 	 */
 	private static String nerdsStory() {
-		// Change the value of the page breaker
 		breaker(15);
 		System.out.println("Nerds Story");
 		breaker(15);
@@ -656,7 +584,6 @@ public class TheJourneyBegins {
 				return reviseAnswers();
 			}
 		} else if (decision.equalsIgnoreCase("d")) {
-			// TODO: Add the question and their answer to this
 			System.out.println("What do you want to change your answer to?");
 			miniGame4 = Keyboard.keyb.nextLine();
 			do {
@@ -747,10 +674,23 @@ public class TheJourneyBegins {
 			System.out.println("\n\"Aha! I won! I want you all to get me a card pack.\"\n -Egbert\n");
 		}
 		// TODO: make good
-		System.out.println("*The 5 of you enter the PockétCenter and knock over a man try*");
+		breaker(12);
+		System.out.println("PockétCenter");
+		breaker(12);
+		System.out.println("*The 5 of you enter the PockétCenter and notice a Pockét monster battle contest*");
 		do {
-			// TODO: have the user decide to fight or run
-		} while (!decision.equalsIgnoreCase("a") && !decision.equalsIgnoreCase("b") && !decision.equalsIgnoreCase("c"));
+			System.out.println("Do you want to join? \n A.yes\n B.no");
+			decision = Keyboard.keyb.nextLine();
+		} while (!decision.equalsIgnoreCase("a") && !decision.equalsIgnoreCase("b"));
+		if(decision.equalsIgnoreCase("a")){
+			//TODO: if they join the battle
+			System.out.println("not yet written");
+		}else{
+			System.out.println("\n\"I would like to take my chance, I believe in my monsters!\"\n -Egbert");
+			System.out.println("\n*You and your friends watch as Egbert challenges*");
+			System.out.println("\n\"And the victor is... Egbert! To claim your prize, please make you way to the front desk\"\n -Annoucer");
+			System.out.println("\n*You and your friends make your way to the front desk*\n\n\"Congrats on winning against our champion. To claim your prize you need to answer this question\"\n -Desk worker");
+		}
 		return intro();
 	}
 
@@ -804,7 +744,8 @@ public class TheJourneyBegins {
 						"\n*You meet up with your friends and head back to the train station and wait for the field trip to officially end*");
 				System.out.println(
 						"\n\"And that my friends is how my school field trip ended... I ran away from a robber...\"\n -you");
-				return "weakEnd";
+				System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
+				endResult();
 				// if the user chases the villain
 			} else {
 				p.goodEvil += 25;
@@ -820,7 +761,8 @@ public class TheJourneyBegins {
 					p.score -= 5;
 					System.out.println("Your prays have not been answered... You have been shot and killed.");
 					System.out.println("\nYou had underestimated the criminal and your soul was the price.");
-					return "heroEnd";
+					System.out.println(p.endingChoice.whatEnding[3].whereToEnd("modernTransportation()"));
+					endResult();
 				} else if (decision.equalsIgnoreCase("c")) {
 					System.out.println("*You see the gun and cower away*");
 					System.out.println("*At least you tried*");
@@ -828,7 +770,8 @@ public class TheJourneyBegins {
 							"\n*You meet up with your friends and head back to the train station and wait for the field trip to officially end*");
 					System.out.println(
 							"\n\"And that my friends is how my school field trip ended... I ran away from a robber...\"\n -you");
-					return "weakEnd";
+					System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
+					endResult();
 				} else {
 					/**
 					 * TODO Write what happens when the user decides to hide.
@@ -843,7 +786,8 @@ public class TheJourneyBegins {
 					} while (!decision.equalsIgnoreCase("yes") && !decision.equalsIgnoreCase("no"));
 					if (decision.equalsIgnoreCase("no")) {
 						System.out.println("*You decide to leave*");
-						return "weakEnd";
+						System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
+						endResult();
 					}
 				}
 			}
@@ -867,7 +811,8 @@ public class TheJourneyBegins {
 				System.out.println(
 						"\n*You and your friends leave the building and start heading back to the randevu and await the reast of your school*");
 				System.out.println("*That is how my field trip went*");
-				return "weakEnd";
+				System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
+				endResult();
 			} else {
 				p.score += 5;
 				p.goodEvil += 15;
@@ -881,7 +826,7 @@ public class TheJourneyBegins {
 				return "craneQuestionOne";
 			}
 		}
-		return "badEnd";
+		return "intro";
 	}
 
 	// Arcade question 1
@@ -1313,10 +1258,15 @@ public class TheJourneyBegins {
 			return "craneQuestionThree";
 		}
 		if (p.goodEvil >= 50) {
-			return "goodEnd";
+		//TODO: use array instead
+			System.out.println(p.endingChoice.whatEnding[0].whereToEnd("craneQuestion3"));
+			endResult();
 		} else {
-			return "evilEnd";
+			//TODO: evil endings
+			System.out.println(p.endingChoice.whatEnding[1].whereToEnd("craneQuestion3"));
+			endResult();
 		}
+		return intro();
 	}
 
 	// Rebel story mode
@@ -1357,4 +1307,5 @@ public class TheJourneyBegins {
 		}
 		return "end";
 	}
+	//TODO: Add a highscore file for each different end (good,bad,heroic,death)
 }

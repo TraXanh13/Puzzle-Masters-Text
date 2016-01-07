@@ -6,4 +6,5 @@ public class Player {
 	int score = 0; // Score
 	int goodEvil = 50; // Users reputation
 	FriendGroup group;
+	WhichEnd endingChoice;
 }
