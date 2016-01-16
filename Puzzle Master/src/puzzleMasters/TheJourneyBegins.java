@@ -57,21 +57,24 @@ public class TheJourneyBegins {
 				currentScenario = reviseAnswers();
 			}
 		} while (!currentScenario.equals("end"));
-		do{
+		do {
 			System.out.println("would you like to play again? (yes/no)");
 			decision = Keyboard.keyb.nextLine();
 		} while (!decision.equalsIgnoreCase("yes") && !decision.equalsIgnoreCase("no"));
-		if(decision.equalsIgnoreCase("yes")){
+		if (decision.equalsIgnoreCase("yes")) {
 			startMenu();
-		}else{
+		} else {
 			System.out.println("Okay, bye!");
 		}
 	}
 
-	//Ending score
-	public static void endResult(){
+	// Ending score
+	public static void endResult() {
 		breaker(20, ">//<");
-		System.out.println("Your end result is: " + p.score + "\nYou have " + p.help + " hint(s) left.");
+		System.out.println("You have " + p.help + " hint(s) left.");
+		p.help *= 5;
+		p.score +=p.help;
+		System.out.println("Taking your hints, your new score is: " + p.score);
 		if (p.goodEvil >= 75) {
 			System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
 		} else if (p.goodEvil > 50 && p.goodEvil < 75) {
@@ -86,7 +89,7 @@ public class TheJourneyBegins {
 		}
 		breaker(20, ">//<");
 	}
-	
+
 	// Break up parts of text depending on "x" using breaker(x value);
 	public static void breaker(int x) {
 		breaker(x, "=");
@@ -682,14 +685,41 @@ public class TheJourneyBegins {
 			System.out.println("Do you want to join? \n A.yes\n B.no");
 			decision = Keyboard.keyb.nextLine();
 		} while (!decision.equalsIgnoreCase("a") && !decision.equalsIgnoreCase("b"));
-		if(decision.equalsIgnoreCase("a")){
-			//TODO: if they join the battle
+		if (decision.equalsIgnoreCase("a")) {
+			// TODO: if they join the battle
 			System.out.println("not yet written");
-		}else{
+		} else {
 			System.out.println("\n\"I would like to take my chance, I believe in my monsters!\"\n -Egbert");
 			System.out.println("\n*You and your friends watch as Egbert challenges*");
-			System.out.println("\n\"And the victor is... Egbert! To claim your prize, please make you way to the front desk\"\n -Annoucer");
-			System.out.println("\n*You and your friends make your way to the front desk*\n\n\"Congrats on winning against our champion. To claim your prize you need to answer this question\"\n -Desk worker");
+			System.out.println(
+					"\n\"And the victor is... Egbert! To claim your prize, please make you way to the front desk\"\n -Annoucer");
+			System.out.println(
+					"\n*You and your friends make your way to the front desk*\n\n\"Congrats on winning against our champion. To claim your prize you need to answer this question\"\n -Desk worker");
+			if (p.help > 0) {
+				do {
+					System.out.println("\nWould you like help from a friend?\n A. Yes\n B. No");
+					decision = Keyboard.keyb.nextLine();
+				} while (!decision.equalsIgnoreCase("a") && !decision.equalsIgnoreCase("b"));
+				// If the user wants to get a hint from a friend
+				if (decision.equalsIgnoreCase("a")) {
+					p.help -= 1;
+					do {
+						// See which friend a user would like a hint from
+						System.out.println("From who?(Enter a friend’s name, Friends are: Lewis and Margaret)");
+						decision = Keyboard.keyb.nextLine();
+					} while (!decision.equalsIgnoreCase("Lewis") && !decision.equalsIgnoreCase("Margaret"));
+					// if the user would like help from Lewis
+					if (decision.equalsIgnoreCase("Lewis")) {
+						System.out.println(p.group.members[0].getResponse("egbertGameQ1"));
+						// if the user would like help from Margaret
+					} else {
+						System.out.println(p.group.members[2].getResponse("egbertGameQ1"));
+					}
+					System.out.println(
+							"If a blue house is made out of blue bricks, a yellow house is made out of yellow bricks\nand a pink house is made out of pink bricks, what is a green house made of? (Just state the answer eg. Yellow Bricks)");
+				}
+			}
+
 		}
 		return intro();
 	}
@@ -746,6 +776,7 @@ public class TheJourneyBegins {
 						"\n\"And that my friends is how my school field trip ended... I ran away from a robber...\"\n -you");
 				System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
 				endResult();
+				return "end";
 				// if the user chases the villain
 			} else {
 				p.goodEvil += 25;
@@ -759,10 +790,9 @@ public class TheJourneyBegins {
 						&& !decision.equalsIgnoreCase("c"));
 				if (decision.equalsIgnoreCase("a")) {
 					p.score -= 5;
-					System.out.println("Your prays have not been answered... You have been shot and killed.");
-					System.out.println("\nYou had underestimated the criminal and your soul was the price.");
 					System.out.println(p.endingChoice.whatEnding[3].whereToEnd("modernTransportation()"));
 					endResult();
+					return "end";
 				} else if (decision.equalsIgnoreCase("c")) {
 					System.out.println("*You see the gun and cower away*");
 					System.out.println("*At least you tried*");
@@ -772,6 +802,7 @@ public class TheJourneyBegins {
 							"\n\"And that my friends is how my school field trip ended... I ran away from a robber...\"\n -you");
 					System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
 					endResult();
+					return "end";
 				} else {
 					/**
 					 * TODO Write what happens when the user decides to hide.
@@ -788,6 +819,7 @@ public class TheJourneyBegins {
 						System.out.println("*You decide to leave*");
 						System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
 						endResult();
+						return "end";
 					}
 				}
 			}
@@ -813,6 +845,7 @@ public class TheJourneyBegins {
 				System.out.println("*That is how my field trip went*");
 				System.out.println(p.endingChoice.whatEnding[4].whereToEnd("modernTransportation"));
 				endResult();
+				return "end";
 			} else {
 				p.score += 5;
 				p.goodEvil += 15;
@@ -1258,15 +1291,16 @@ public class TheJourneyBegins {
 			return "craneQuestionThree";
 		}
 		if (p.goodEvil >= 50) {
-		//TODO: use array instead
+			// TODO: use array instead
 			System.out.println(p.endingChoice.whatEnding[0].whereToEnd("craneQuestion3"));
 			endResult();
+			return "end";
 		} else {
-			//TODO: evil endings
+			// TODO: evil endings
 			System.out.println(p.endingChoice.whatEnding[1].whereToEnd("craneQuestion3"));
 			endResult();
+			return "end";
 		}
-		return intro();
 	}
 
 	// Rebel story mode
@@ -1307,5 +1341,5 @@ public class TheJourneyBegins {
 		}
 		return "end";
 	}
-	//TODO: Add a highscore file for each different end (good,bad,heroic,death)
+	// TODO: Add a high score file
 }

@@ -19,7 +19,7 @@ public class EndSelection {
 			}
 		}else if(end.equals("heroEnd")){	//If the user dies trying to help/save someone/thing
 			if (scenario.equals("modernTransportation()")){
-				return "\nSadly " + p.firstName
+				return "Your prays have not been answered\n\n And your soul was the price\n\nSadly " + p.firstName
 					+ ", you have died... But, your sacrifice wasn't in vain, your name will forever be remembered.";
 			}
 		}else{								//if the user runs away
