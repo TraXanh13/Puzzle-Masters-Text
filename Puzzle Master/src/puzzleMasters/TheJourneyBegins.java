@@ -10,7 +10,7 @@ public class TheJourneyBegins {
 	static String miniGame5 = "";
 	private static String currentScenario = "startMenu";
 	private static int scorePoints;
-	public static Highscore highScores = new Highscore();
+	//public static Highscore highScores = new Highscore();
 
 	public static void main(String[] args) {
 		do {
@@ -143,7 +143,7 @@ public class TheJourneyBegins {
 
 	// The starting screen
 	public static String startMenu() {
-		highScores.loadHighScores();
+		//highScores.loadHighScores();
 		System.out.println("Welcome to Puzzle Masters!");
 		String play = "";
 		String toMain = "";
