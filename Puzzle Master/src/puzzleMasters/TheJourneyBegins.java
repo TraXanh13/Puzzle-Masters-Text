@@ -10,6 +10,7 @@ public class TheJourneyBegins {
 	static String miniGame5 = "";
 	private static String currentScenario = "startMenu";
 	private static int scorePoints;
+	public static Highscore highScores = new Highscore();
 
 	public static void main(String[] args) {
 		do {
@@ -62,7 +63,7 @@ public class TheJourneyBegins {
 			decision = Keyboard.keyb.nextLine();
 		} while (!decision.equalsIgnoreCase("yes") && !decision.equalsIgnoreCase("no"));
 		if (decision.equalsIgnoreCase("yes")) {
-			startMenu();
+			intro();
 		} else {
 			System.out.println("Okay, bye!");
 		}
@@ -142,6 +143,7 @@ public class TheJourneyBegins {
 
 	// The starting screen
 	public static String startMenu() {
+		highScores.loadHighScores();
 		System.out.println("Welcome to Puzzle Masters!");
 		String play = "";
 		String toMain = "";

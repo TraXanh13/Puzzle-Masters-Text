@@ -8,8 +8,8 @@ import java.io.PrintWriter;
 import java.io.FileReader;
 
 public class Highscore {
-	static final String ScoreFile = "PlayerScores.txt";
-	static HighScores[] highScore = new HighScores[3];
+	static final String HIGHSCOREFILE = "PlayerScores.txt"; //Create the file
+	static HighScores[] highScore = new HighScores[3]; //Hold the top 3 scores
 
 	public static boolean submitHighScore(Player p) {
 
@@ -18,7 +18,7 @@ public class Highscore {
 		PrintWriter outputStream = null;
 		try {
 			// Create a new file
-			outputStream = new PrintWriter(new FileWriter(ScoreFile));
+			outputStream = new PrintWriter(new FileWriter(HIGHSCOREFILE));
 			outputStream.println(TheJourneyBegins.p.firstName);
 			outputStream.println(TheJourneyBegins.p.score);
 		} catch (IOException ex) {
@@ -31,7 +31,7 @@ public class Highscore {
 		// read in the scores
 		BufferedReader inputStream = null;
 		try {
-			inputStream = new BufferedReader(new FileReader(ScoreFile));
+			inputStream = new BufferedReader(new FileReader(HIGHSCOREFILE));
 			System.out.println(inputStream.readLine());
 		} catch (FileNotFoundException ex) {
 			System.out.println(ex);
