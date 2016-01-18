@@ -1,5 +1,7 @@
 package puzzleMasters;
 
+import java.io.FileNotFoundException;
+
 public class TheJourneyBegins {
 	static String decision = ""; // Takes the user input
 	public static Player p = new Player();
@@ -10,9 +12,16 @@ public class TheJourneyBegins {
 	static String miniGame5 = "";
 	private static String currentScenario = "startMenu";
 	private static int scorePoints;
-	//public static Highscore highScores = new Highscore();
+	public static HighScore highScore = new HighScore();
+	// public static Highscore highScores = new Highscore();
 
 	public static void main(String[] args) {
+		try {
+			highScore.loadHighscores();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		do {
 			if (currentScenario.equals("startMenu")) {
 				currentScenario = startMenu();
@@ -74,7 +83,7 @@ public class TheJourneyBegins {
 		breaker(20, ">//<");
 		System.out.println("You have " + p.help + " hint(s) left.");
 		p.help *= 5;
-		p.score +=p.help;
+		p.score += p.help;
 		System.out.println("Taking your hints, your new score is: " + p.score);
 		if (p.goodEvil >= 75) {
 			System.out.println("Your Good/Bad Metre is: Goodie Goodie, " + p.goodEvil);
@@ -89,6 +98,7 @@ public class TheJourneyBegins {
 			System.out.println("Your Good/Bad Metre is: Devils Spawning, " + p.goodEvil);
 		}
 		breaker(20, ">//<");
+		highScore.submitHighscores();
 	}
 
 	// Break up parts of text depending on "x" using breaker(x value);
@@ -143,7 +153,7 @@ public class TheJourneyBegins {
 
 	// The starting screen
 	public static String startMenu() {
-		//highScores.loadHighScores();
+		// highScores.loadHighScores();
 		System.out.println("Welcome to Puzzle Masters!");
 		String play = "";
 		String toMain = "";
